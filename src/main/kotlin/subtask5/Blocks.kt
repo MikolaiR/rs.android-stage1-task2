@@ -7,7 +7,7 @@ import kotlin.reflect.KClass
 
 class Blocks {
 
-    fun getData(blockA: Array<Any>, blockB: KClass<*>): Any {
+    fun getData(blockA: Array<*>, blockB: KClass<*>): Any {
         if (blockA.isNotEmpty()&&blockB != Nothing::class) {
             when (blockB) {
                 Int::class -> {
