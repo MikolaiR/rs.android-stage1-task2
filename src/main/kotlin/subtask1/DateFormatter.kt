@@ -1,9 +1,20 @@
 package subtask1
 
+import java.time.DateTimeException
+import java.time.LocalDate
+import java.time.format.TextStyle
+import java.util.*
+
 class DateFormatter {
 
-    // TODO: Complete the following function
     fun toTextDay(day: String, month: String, year: String): String {
-        throw NotImplementedError("Not implemented")
+        return try {
+            val calendar: LocalDate = LocalDate.of(year.toInt(), month.toInt(), day.toInt())
+            val dayOfWeek = calendar.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
+            val monthOfYear = calendar.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
+            "$day $monthOfYear, $dayOfWeek"
+        } catch (e: DateTimeException) {
+            "Такого дня не существует"
+        }
     }
 }
