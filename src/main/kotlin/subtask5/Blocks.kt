@@ -2,6 +2,7 @@ package subtask5
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
 import kotlin.reflect.KClass
 
 class Blocks {
@@ -44,7 +45,7 @@ class Blocks {
                         }
                         count++
                     }
-                    return blockC.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))
+                    return blockC.format(DateTimeFormatter.ofPattern("dd.MM.yyyy").withLocale(Locale("ru")))
                 }
                 else -> return "missing class type"
             }
