@@ -10,6 +10,7 @@ class DateFormatter {
     fun toTextDay(day: String, month: String, year: String): String {
         return try {
             val calendar: LocalDate = LocalDate.of(year.toInt(), month.toInt(), day.toInt())
+            Locale.setDefault(Locale("ru"))
             val dayOfWeek = calendar.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
             val monthOfYear = calendar.month.getDisplayName(TextStyle.FULL, Locale.getDefault())
             "$day $monthOfYear, $dayOfWeek"
