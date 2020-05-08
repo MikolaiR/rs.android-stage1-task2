@@ -53,15 +53,11 @@ class Pangram {
     }
 
     fun getResult(inputString: String): String {
-        val list = inputString.split(" ").filter { it.isNotEmpty() && it[0] != '\n' }
-        val abc = (1 shl 26) - 1
-        var aggregate = 0
-        for ((index, _) in inputString.withIndex()) {
-            val char: Char = Character.toLowerCase(inputString[index])
-            if (char in 'a'..'z') aggregate = aggregate or (1 shl char - 'a')
-        }
-        return if (aggregate == abc) {
-            isPanagramma(list).joinToString(" ")
-        } else isNotPanagramma(list).joinToString(" ")
+        val list = inputString.split(" ").filter { it.isNotEmpty() && it[0] !='\n' }
+        var set = sortedSetOf<Char>()
+        inputString.forEach { if (it.toLowerCase() in 'a'..'z') set.add(it.toLowerCase()) }
+        return if (set.size == 26){
+            isPanagramma(list).joinToString (" ")
+        }else isNotPanagramma(list).joinToString (" ")
     }
 }
