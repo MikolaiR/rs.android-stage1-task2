@@ -55,7 +55,7 @@ class Pangram {
     fun getResult(inputString: String): String {
         val list = inputString.split(" ").filter { it.isNotEmpty() && it[0] !='\n' }
         var set = hashSetOf<Char>()
-        inputString.forEach { if (it.toLowerCase() in 'a'..'z') set.add(it) }
+        inputString.forEach { if (it.toLowerCase() in 'a'..'z') set.add(it.toLowerCase()) }
         return if (set.size == 26){
             isPanagramma(list).joinToString (" ")
         }else isNotPanagramma(list).joinToString (" ")
